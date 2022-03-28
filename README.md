@@ -7,6 +7,8 @@
 
 ## Task02 - bmi.py: 
 The user is prompted to enter their height in cm and weight in kg and their bmi is calculated.
+<br>
+
         $ python bmi.py
         Enter weight(kg): 65
         Enter height(cm): 180
@@ -18,6 +20,8 @@ The BMI is (kg/m<sup>2</sup>): 20.06
 ## Task03 - secondstring.py: 
 The user enters a string and every second letter is output in reverse order.
         $ python secondstring.py
+<br>
+
         Please enter a sequence: The quick brown fox jumps over the lazy dog.
         .o zletrv pu o wr cu h
 
@@ -28,6 +32,8 @@ The user enters any positive integer and the output is dependent on whether it's
 If it's even, divide by two,
 If it's odd, multiply by three and add 1
 collatz.py is the implementation of the collatz conjecture.
+<br>
+
         $ python collatz.py
         Please enter a positive integer: 10
         10 5 16 8 4 2 1
