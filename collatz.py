@@ -8,6 +8,8 @@
 
 # Author: Fabio Fabrizi
 
+# Old version
+"""
 posInt = int(input("Please enter a positive integer: "))
 # checking as I go along
 #out = print("the number you entered was", posInt)
@@ -21,3 +23,35 @@ else:
         elif posInt % 2 == 1:
             posInt = (posInt * 3) + 1
             print(posInt) # Print out the odd number result
+"""
+# New version below - Checks that the user has entered a valid integer
+# and if so, carries on with calculating collatz.
+# Also made the output a bit nicer - put into list, appended and printed 
+# as that's what it looked like on the page.
+
+
+while True:
+    num = input("Please enter an integer: ")
+    nice_Out = [] # Have it in the format displayed on the page - horizontally
+    try:
+        posInt = int(num)
+        print("Input is an integer number.")
+        print("Input number is: ", posInt)
+        # code below here
+        if posInt == 1:
+            print("Sorry, you've already reached the end of the conjecture.")
+        else:  
+            while posInt > 1:
+                if posInt % 2 == 0:
+                    posInt = posInt // 2
+                    #print(posInt) # Print out the even number result
+                    nice_Out.append(posInt)
+                elif posInt % 2 == 1:
+                    posInt = (posInt * 3) + 1
+                    #print(posInt) # Print out the odd number result
+                    nice_Out.append(posInt)
+            print(nice_Out)
+        # code above here
+        break
+    except ValueError:
+        print("This is not an integer. Please enter an integer: ")
