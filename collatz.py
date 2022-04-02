@@ -28,16 +28,29 @@ else:
 # and if so, carries on with calculating collatz.
 # Also made the output a bit nicer - put into list, appended and printed 
 # as that's what it looked like on the page.
+#
+# Put the collatz conjecture into a module and separated the error checking
+# Lots more lines of code but maybe more robust?
+# Looking down the road - maybe something like Numpy for big exploration of conjecture?
 
-
-while True:
-    num = input("Please enter an integer: ")
-    nice_Out = [] # Have it in the format displayed on the page - horizontally
-    try:
-        posInt = int(num)
-        print("Input is an integer number.")
-        print("Input number is: ", posInt)
-        # code below here
+if __name__ == '__main__':
+    number = 0
+    while True:
+        num = input("Please enter an integer: ")
+        nice_Out = [] # Have it in the format displayed on the page - horizontally
+        try:
+            posInt = int(num)
+            #print("Input is an integer number.")
+            #print("Input number is: ", posInt)
+            break
+        except ValueError:
+            print("This is not an integer. Please enter an integer: ")
+            #break
+    number = num
+    #print(number)
+    def collatz(posInt):
+        #number = posInt
+        posInt = int(posInt)
         if posInt == 1:
             print("Sorry, you've already reached the end of the conjecture.")
         else:  
@@ -50,8 +63,11 @@ while True:
                     posInt = (posInt * 3) + 1
                     #print(posInt) # Print out the odd number result
                     nice_Out.append(posInt)
-            print(nice_Out)
+            #print(nice_Out)
         # code above here
-        break
-    except ValueError:
-        print("This is not an integer. Please enter an integer: ")
+        #break
+        if len(nice_Out) > 1:
+            return nice_Out
+        else:
+            return posInt
+    print(collatz(number))
