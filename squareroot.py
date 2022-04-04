@@ -18,11 +18,11 @@
 # √num = 0.5 * ((num/guess) + guess)
 
 def newtonSquareRoot(num):
-    guess = 0.5*num
+    guess = 0.5 * num
     numRoot = 0.5 * (guess + (num/guess))
     while numRoot != guess:
         guess = numRoot
-        numRoot = 0.5*(guess + (num/guess))
+        numRoot = 0.5 * (guess + (num/guess))
     return guess
 # print(newtonSquareRoot(num))
 
@@ -30,7 +30,7 @@ def newtonSquareRoot(num):
 
 while True:
     num = float(input("Please enter a positive number: "))
-    if num < 0:
+    if num <= 0:
         print("That wasn't a positive number. Please try again.")
     else:
         print("The square root of {} is {}".format(num, newtonSquareRoot(num)))
