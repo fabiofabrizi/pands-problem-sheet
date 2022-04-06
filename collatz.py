@@ -8,49 +8,33 @@
 
 # Author: Fabio Fabrizi
 
-# Old version
-"""
-posInt = int(input("Please enter a positive integer: "))
-# checking as I go along
-#out = print("the number you entered was", posInt)
-if posInt == 1:
-    print("Sorry, you've already reached the end of the conjecture.")
-else:  
-    while posInt > 1:
-        if posInt % 2 == 0:
-            posInt = posInt // 2
-            print(posInt) # Print out the even number result
-        elif posInt % 2 == 1:
-            posInt = (posInt * 3) + 1
-            print(posInt) # Print out the odd number result
-"""
-# New version below - Checks that the user has entered a valid integer
-# and if so, carries on with calculating collatz.
-# Also made the output a bit nicer - put into list, appended and printed 
-# as that's what it looked like on the page.
+# Seperated the error checking and conjecture into functions
+# Error checking of the input is below.
+# https://docs.python.org/3/tutorial/errors.html#handling-exceptions
 #
-# Put the collatz conjecture into a module and separated the error checking
-# Lots more lines of code but maybe more robust?
-# Looking down the road - maybe something like Numpy for big exploration of conjecture?
+# Grouped the Exceptions together to try and make it tidier
 
-if __name__ == '__main__':
-    number = 0
+def main():
     while True:
-        num = input("Please enter an integer: ")
-        nice_Out = [] # Have it in the format displayed on the page - horizontally
         try:
-            posInt = int(num)
-            #print("Input is an integer number.")
-            #print("Input number is: ", posInt)
+            number = int(input("Please enter a positive integer: "))
+            assert number > 0
+            print("The number you entered was ", number)
+            posInt = number
+            #if num > 0:
             break
-        except ValueError:
-            print("This is not an integer. Please enter an integer: ")
-            #break
-    number = num
-    #print(number)
-    def collatz(posInt):
-        #number = posInt
-        posInt = int(posInt)
+        except (ValueError, TypeError, AssertionError):
+            print("You have to enter a positive integer")
+    #print("The value of x is ", posInt)
+    return posInt
+
+x = main()
+posInt = x
+# Collatz conjecture implemented below
+def collatz(posInt):
+        #posInt = x
+        #posInt = int(posInt)
+        nice_Out = [] # Have it in the format displayed on the page - horizontally
         if posInt == 1:
             print("Sorry, you've already reached the end of the conjecture.")
         else:  
@@ -63,11 +47,12 @@ if __name__ == '__main__':
                     posInt = (posInt * 3) + 1
                     #print(posInt) # Print out the odd number result
                     nice_Out.append(posInt)
-            #print(nice_Out)
+            print(nice_Out)
         # code above here
         #break
         if len(nice_Out) > 1:
             return nice_Out
         else:
             return posInt
-    print(collatz(number))
+        #print(collatz(posInt))
+collatz(posInt)
