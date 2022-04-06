@@ -17,6 +17,41 @@
 # Formula:
 # √num = 0.5 * ((num/guess) + guess)
 
+# Trying to get rid of while True and using try/except instead
+
+if __name__ == '__main__':
+
+    # Error checking the input here
+    def main():
+        while True:
+            try:
+                # Convert to float and check it works
+                number = float(input("Please enter a positive Number: "))
+                assert number > 0
+                print("The number you entered was ", number)
+                squareNum = number
+                # Break out the loop if everything is as it should be
+                break
+            except (ValueError, TypeError, AssertionError):
+                print("You have to enter a positive integer")
+        
+        return squareNum
+
+# Put squareNum into newtonSquareRoot()
+num = main()
+
+def newtonSquareRoot(num):
+    guess = 0.5 * num
+    numRoot = 0.5 * (guess + (num/guess))
+    while numRoot != guess:
+        guess = numRoot
+        numRoot = 0.5 * (guess + (num/guess))
+    return guess
+print("The square root of {} is {}".format(num, newtonSquareRoot(num)))
+
+
+# Old version below
+"""
 def newtonSquareRoot(num):
     guess = 0.5 * num
     numRoot = 0.5 * (guess + (num/guess))
@@ -43,3 +78,4 @@ while True:
         break
     
 print("Thanks for following instructions!") # You can put final message here
+"""
