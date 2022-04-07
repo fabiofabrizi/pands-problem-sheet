@@ -79,3 +79,9 @@ I have removed songs-of-innocence.txt as I think that there was an issue with th
 
 ## Task08 - plottask.py: 
 A program that displays a plot of the functions f(x)=x, g(x)=x2 and h(x)=x3 in the range [0, 4] on the one set of axes.
+To run:
+<br>
+
+        $ python .\plottask.py
+<br>
+and the plot will be displayed.
