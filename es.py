@@ -28,49 +28,58 @@
 # I'm going to try and tidy up and make the checking part into a function
 # and use Python's built-in count() method to make it tidier.
 
-import os
+# First, import modules needed to get current working directory
+# NB - This is important, as I'm making assumption that 
+# the text file is located where the python code is being run.
+# This time, convert to lowercase and then put in modules
 import sys
-filename = sys.argv[-1] # Get the last 
+import os
+from typing import final
 
-# Get Extension
-get_ext = os.path.splitext(filename)
-#print(get_ext[1]) # to test what happens
+try: 
+    filename = sys.argv[-1] # Get the last 
+    get_ext = os.path.splitext(filename)
+    ext = get_ext[1]
+except (FileNotFoundError):
+    cwd = os.getcwd()
+    print("Your current working directory (cwd) is :\n\n{0}".format(cwd))
+    print("\n")
+    print("Please make sure that the text file to be checked \nis in your cwd and ends in .txt")
+    print("\n")
 
-# Check Extension
-ext = get_ext[1]
-# print(ext) # To check it's working
+
 if (ext != '.txt'):
-    print("Please enter a plain text file (.txt) to check")
+        print("Please enter a plain text file (.txt) at the command line after running the script")
+        print("The file should be entered as: es.py <filename.txt> when running")
+        print("the python script from the command line")
+        #print("Your current working directory (cwd) is :\n\n{0}".format(cwd))
+    #break
 else:
-    # print("correct extension")
-    # Can start the process here
-    
+    #print(get_ext[1]) # to test what happens
+    #print(filename)
+
     # Function
-    def letterFrequency(filename, letter):
-    # User is prompted for a text file.
-    #fileName = input('Enter name of text file: ')
+    def letterCount(filename, letter):
+    # Use open() to open file
         with open(filename,'r', encoding="utf8") as file:
-    
+
             # store content of the file in a variable
             text = file.read()
-    
+
         # declare count variable
         count = 0
-    
+
         # iterate through each character
         for char in text:
-    
-            # compare each character with
-            # the given letter
-            if char == letter:
+            # Convert to lowercase here
+            k = char.lower()
+            if k == letter:
                 count += 1
-    
-        # return letter count
-        #print(count)
+
         if count == 0:
             print("The letter " + letter + " is not contained in the txt file.")
         return count
 
- 
+
     # call function and display the letter count
-    print(letterFrequency(filename, 'e'))
+    print(letterCount(filename, 'e'))
