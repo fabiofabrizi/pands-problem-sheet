@@ -68,6 +68,9 @@ This uses the Newton method of estimating square roots and not a built-in functi
 
 ## Task07 - es.py: 
 The program reads in a text file at the command line and outputs the number of e's contained in the file.
+NB: There must be at least one text file located where the python script is to be run.
+I have provided two files: songs.txt and Noes.txt (contains no e's) for testing.
+I have removed songs-of-innocence.txt as I think that there was an issue with the encoding.
 <br>
 
         $ python es.py moby-dick.txt
